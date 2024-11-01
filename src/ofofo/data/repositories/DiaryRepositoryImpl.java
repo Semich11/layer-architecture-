@@ -6,28 +6,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryRepositoryImpl implements DiaryRepository {
-//    private static DiaryRepositoryImpl instance;
-    private List<Diary> diaries = new ArrayList<>();
-    private  int numberOfEntries;
+    private List<Diary> diaries = new ArrayList<Diary>();
+
+
+    @Override
+    public long count() {
+        return diaries.size();
+    }
+
+    @Override
+    public void delete(Diary diary) {
+
+
+    }
+
+    @Override
+    public void deleteAll() {
+        diaries.clear();
+
+    }
+
+    @Override
+    public void deleteById(String id) {
+        for(int index = 0; index < diaries.size(); index++) {
+            if(diaries.get(index).getUserName().equals(id)) {
+                diaries.remove(diaries.get(index));
+            }
+        }
+    }
+
+    @Override
+    public boolean existsById(String id) {
+        return false;
+    }
+
+    @Override
+    public Diary findById(String id) {
+        return null;
+    }
 
     @Override
     public void save(Diary diary) {
+        if(diary.getUserName()  == null || diary.getPassword() == null) throw new IllegalArgumentException("Diary is null");
         diaries.add(diary);
-        numberOfEntries++;
-    }
-
-    @Override
-    public int count() {
-        return numberOfEntries;
-    }
-
-
-    public Diary findById(String username) {
-        for (Diary diary : diaries) {
-            if (diary.getUsername().equals(username)) {
-                return diary;
-            }
-        }
-        return null;
     }
 }
+
