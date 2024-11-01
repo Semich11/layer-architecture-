@@ -1,0 +1,68 @@
+CREATE TABLE STUDENT (
+    id  INT,
+    name CHAR(225),
+    age INT,
+    gender CHAR(225)
+);
+
+CREATE TABLE COURSE (
+    id  INT,
+    title CHAR(225),
+    facilitator CHAR(225),
+    no_of_student CHAR(225)
+);
+
+CREATE TABLE GRADE (
+    course_id   INT,
+    student_id  CHAR(225),
+    score   CHAR(225)
+);
+
+INSERT INTO STUDENT VALUES (1, 'Samad', 19, 'male');
+
+INSERT INTO STUDENT VALUES (2, 'Jude', 13, 'male');
+
+INSERT INTO STUDENT VALUES (3, 'Cliton', 9, 'male');
+
+INSERT INTO COURSE VALUES (1, 'Mathematics', 1, 4);
+
+INSERT INTO COURSE VALUES (2, 'English', 1, 4);
+
+INSERT INTO COURSE VALUES (3, 'Civic', 1, 4);
+
+INSERT INTO GRADE VALUES (1,  1, 4);
+
+INSERT INTO GRADE VALUES (2,  2, 7);
+
+INSERT INTO GRADE VALUES (3,  3, 2);
+
+SELECT MAX(score), MIN(score)
+FROM GRADE;
+
+SELECT MAX(course_id), MIN(course_id)
+FROM GRADE;
+
+UPDATE COURSE
+SET no_of_student = 2
+WHERE id = 1;
+
+UPDATE COURSE
+SET no_of_student = 1
+WHERE id = 3;
+
+SELECT MAX(no_of_student), MIN(no_of_student)
+FROM COURSE;
+
+UPDATE COURSE
+SET facilitator = 'Esther'
+WHERE id = 1;
+
+
+UPDATE COURSE
+SET facilitator = 'Jennifer'
+WHERE id = 2;
+
+
+UPDATE COURSE
+SET facilitator = 'Chibuzor'
+WHERE id = 3;
